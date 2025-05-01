@@ -4,12 +4,13 @@ import Usuario from '../models/usuario.js';
 import { validationResult } from 'express-validator';
 
 export const getUsers = async(req = request, res = response) => {
+    console.log('hola')
     const {limite =5, desde=0} = req.query;
     // se tarda mas
-    // const usuarios = await Usuario.find({estatus:true})
-    //     .skip(parseInt(desde))
-    //     .limit(parseInt(limite));
-    // const total = await Usuario.countDocuments({estatus:true});
+    // // const usuarios = await Usuario.find({estatus:true})
+    // //     .skip(parseInt(desde))
+    // //     .limit(parseInt(limite));
+    // // const total = await Usuario.countDocuments({estatus:true});
 
     const [usuarios,total] = await Promise.all([
         Usuario.find({estatus:true}).skip(parseInt(desde)).limit(parseInt(limite)),
